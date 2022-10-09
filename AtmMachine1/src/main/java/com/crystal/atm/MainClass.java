@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class MainClass {
     public static void main(String[] args) {
-        AtmOperationsInterface op = new AtmOperations();
+        AtmInterface op = new AtmOperations();
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Welcome to ATM Machine!");
