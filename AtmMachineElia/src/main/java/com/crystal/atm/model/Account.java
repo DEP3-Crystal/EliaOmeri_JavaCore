@@ -16,10 +16,10 @@ public class Account {
     private String userId;
     private String accNumber;
     private final String iban;
-    private long balance ;
+    private long balance;
     private List<Card> cards;
 
-    public Account(String userId, String accNumber,String iban,  long balance, List<Card> cards) {
+    public Account(String userId, String accNumber, String iban, long balance, List<Card> cards) {
         this.iban = iban;
         this.accNumber = accNumber;
         this.userId = userId;

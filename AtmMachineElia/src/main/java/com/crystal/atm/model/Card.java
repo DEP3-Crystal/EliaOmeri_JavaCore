@@ -7,12 +7,12 @@ import lombok.Data;
 
 @Data
 public class Card {
-    private final   String idCard;
+    private final String idCard;
     private final String AccountId;
     private String pin;
     private final String cvv;
-    private  int validMonth ;
-    private  int validYear;
+    private int validMonth;
+    private int validYear;
 
     public Card(String idCard, String accountId, String pin, String cvv, int validMonth, int validYear) {
         this.idCard = idCard;

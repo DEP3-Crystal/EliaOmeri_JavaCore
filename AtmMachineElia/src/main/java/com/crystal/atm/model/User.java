@@ -21,10 +21,12 @@ public class User {
         this.age = age;
         this.accounts = accounts;
     }
-    public  void addAccount(Account account){
+
+    public void addAccount(Account account) {
         accounts.add(account);
     }
-    public  void removeAccount(Account account){
+
+    public void removeAccount(Account account) {
         accounts.remove(account);
     }
 }

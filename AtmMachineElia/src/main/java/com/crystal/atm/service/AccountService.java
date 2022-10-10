@@ -20,8 +20,8 @@ public class AccountService {
 
 
     public boolean withdraw(Account account, long amount) throws IllegalArgumentException {
-        if (amount % 500 == 0 && account.getBalance() > amount) {
-            account.withdraw(amount);
+        if (amount % 500.0 == 0.0 && account.getBalance() >= amount) {
+            account.setBalance(account.getBalance() - amount);
             return true;
         } else {
             throw new IllegalArgumentException("Transaction can't be done!");
@@ -32,7 +32,7 @@ public class AccountService {
     public boolean deposit(Account account, long amount) {
         if (amount % 500 == 0) {
             account.deposit(amount);
-            System.out.println("trans done!");
+            System.out.println("Transfer done!");
             return true;
         } else {
             System.out.println("Please enter the amount in multiple of 500");
@@ -93,7 +93,7 @@ public class AccountService {
     public Account getAccountByAccNr(String accNumber) throws IOException {
         for (User user : dataAccess.getUsers()) {
             for (Account account : user.getAccounts()) {
-                if (Objects.equals(account.getAccNumber(), accNumber)){
+                if (Objects.equals(account.getAccNumber(), accNumber)) {
                     return account;
                 }
             }
@@ -102,11 +102,13 @@ public class AccountService {
     }
 
     public boolean transferFounds(Account account, String receiver, long amount) throws IOException {
-        if (!(getAccountByAccNr(receiver).getAccNumber()==null)){
-            if (withdraw(account,amount)){
-                if (deposit(getAccountByAccNr(receiver),amount)){
+        if (!(getAccountByAccNr(receiver).getAccNumber() == null)) {
+            if (withdraw(account, amount)) {
+                if (deposit(getAccountByAccNr(receiver), amount)) {
                     System.out.println("Transfer done");
+                    return true;
                 }
+                return false;
             }
         }
         return false;

@@ -10,9 +10,9 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class AtmMenu {
-    private Scanner sc = new Scanner(System.in);
-    private DataAccess dataAccess;
-    private AccountService accountService;
+    private final Scanner sc = new Scanner(System.in);
+    private final DataAccess dataAccess;
+    private final AccountService accountService;
 
     public AtmMenu(DataAccess dataAccess, AccountService accountService) throws IOException {
         this.dataAccess = dataAccess;
@@ -80,7 +80,6 @@ public class AtmMenu {
                 //Withdraw
                 System.out.println("Enter amount to withdraw: ");
                 amount = sc.nextLong();
-                accountService.withdraw(account, amount);
                 if (!accountService.withdraw(account, amount)) {
                     showOperationMenu(account);
                 }
@@ -106,7 +105,7 @@ public class AtmMenu {
 
         System.out.println("Do you want do another operation? Y/N y/n");
         String answer = sc.next();
-        if (answer.toLowerCase().equals("y")) {
+        if (answer.equalsIgnoreCase("y")) {
             showOperationMenu(account);
         } else {
             System.exit(0);
