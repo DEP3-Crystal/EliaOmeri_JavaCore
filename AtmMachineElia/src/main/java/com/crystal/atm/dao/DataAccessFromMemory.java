@@ -3,6 +3,7 @@ package com.crystal.atm.dao;
 import com.crystal.atm.model.Account;
 import com.crystal.atm.model.Card;
 import com.crystal.atm.model.User;
+import com.github.javafaker.Faker;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class DataAccessFromMemory implements DataAccess {
     }
 
     public List<User> getUsersInfo() {
-
+        Faker faker = new Faker();
 
         List<User> users = new ArrayList<>();
 
@@ -31,14 +32,18 @@ public class DataAccessFromMemory implements DataAccess {
         //User(String id, String firstName, String lastName, int age, List<Account> accounts)
 
 
-        users.add(new User("1", "Elia", "Omeri", 23,
-                List.of(new Account("1", "2", "abn456", 1500
-                        , List.of(new Card("00", "2", "236", "365", 1, 2022)))
-                )));
-        users.add(new User("2", "Ana", "Ana", 26,
-                List.of(new Account("2", "255", "abn456", 1500,
-                        List.of(new Card("01", "255", "236", "365", 1, 2022))))));
-        return users;
+        for (int i = 0;i<10;i++){
+           users.add(new User(faker.idNumber().valid(),faker.name().firstName(),faker.name().lastName(),faker.number().numberBetween(0,120),
+                   List.of(new Account(faker.idNumber().valid(),))
+//        List<User> users = new ArrayList<>();
+//        users.add(new User("1", "Elia", "Omeri", 23,
+//                List.of(new Account("1", "2", "abn456", 1500
+//                        , List.of(new Card("00", "2", "236", "365", 1, 2022)))
+//                )));
+//        users.add(new User("2", "Ana", "Ana", 26,
+//                List.of(new Account("2", "255", "abn456", 1500,
+//                        List.of(new Card("01", "255", "236", "365", 1, 2022))))));
+//        return users;
     }
 
 

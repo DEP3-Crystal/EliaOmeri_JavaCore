@@ -1,2 +1,0 @@
-# Elia Java Core
-
