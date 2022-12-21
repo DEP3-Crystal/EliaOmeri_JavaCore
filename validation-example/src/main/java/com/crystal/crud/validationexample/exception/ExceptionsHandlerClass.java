@@ -21,7 +21,7 @@ public class ExceptionsHandlerClass {
         return errors;
     }
 
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(UserNotFoundException.class)
     public Map<String, String> handleUserNotFoundException(UserNotFoundException ex) {
         Map<String, String> errors = new HashMap<>();
